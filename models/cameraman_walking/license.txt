@@ -1,0 +1,8 @@
+Model Information:
+* title:	Cameraman_walking
+* source:	https://sketchfab.com/3d-models/cameraman-walking-2548782629ef4a418638dd4da08887c6
+* author:	StarlordStudio Multiverse (https://sketchfab.com/anthonyismael787)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

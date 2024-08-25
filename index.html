@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three.JS Tinkerspace</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+    <style type="text/css">
+      a[target="_blank"]::after {
+        content: "↗";
+      }
+      dialog {
+        margin: auto !important;
+        max-width: 100%;
+        width: 100vw;
+        height: auto;
+        overflow: hidden;
+      }
+      dialog iframe {
+        width: 100%;
+        height: 100%;
+      }
+      dialog form {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      dialog form button {
+        line-height: 0.75em;
+        padding: 0.25em;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.167.1/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <figure>
+        <canvas
+          id="title"
+          style="width: min(100%, 100vh * 4 / 1); aspect-ratio: 4 / 1"
+        ></canvas>
+        <figcaption
+          >The above canvas renders the Quicksand Google Font text geometry with
+          an animated swinging light.<br />The scene background follows the
+          system's color scheme (dark or light).</figcaption
+        >
+      </figure>
+    </header>
+
+    <blockquote cite="https://en.wikipedia.org/wiki/Three.js">
+      <p>
+        <a href="https://threejs.org/" target="_blank">Three.JS</a> is a
+        cross-browser JavaScript library and application programming interface
+        (API) used to create and display animated 3D computer graphics in a web
+        browser using WebGL.
+      </p>
+      <p><cite>– Wikipedia, "Three.js"</cite></p>
+    </blockquote>
+
+    <article>
+      <button onclick="document.getElementById('page-texts').showModal();">
+        Open Texts
+      </button>
+      <dialog id="page-texts">
+        <iframe
+          src="/texts.html"
+          frameborder="0"
+          loading="lazy"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+        <form method="dialog">
+          <button>✖</button>
+        </form>
+      </dialog>
+      <code>function renderText</code>
+      <p
+        >It renders texts of various font typefaces. Use the
+        <a href="https://gero3.github.io/facetype.js/" target="_blank"
+          >Facetype.js</a
+        >
+        tool to convert a font file to a typeface <code>JSON</code> font file.
+        The scene background follows the system's color scheme (dark or light).
+      </p>
+    </article>
+
+    <article>
+      <button onclick="document.getElementById('page-shapes').showModal();">
+        Open Shapes
+      </button>
+      <dialog id="page-shapes">
+        <iframe
+          src="/shapes.html"
+          frameborder="0"
+          loading="lazy"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+        <form method="dialog">
+          <button>✖</button>
+        </form>
+      </dialog>
+      <code>function renderShape</code>
+      <p
+        >It renders various flat 2D shapes, such as regular polygons (they have
+        equal sides and angles - triangles, squares, polygons, even circles),
+        flat plane geometries (squares and rectangles), and procedurally drawn
+        shapes.</p
+      >
+    </article>
+
+    <article>
+      <button onclick="document.getElementById('page-boxes').showModal();">
+        Open Boxes
+      </button>
+      <dialog id="page-boxes">
+        <iframe
+          src="/boxes.html"
+          frameborder="0"
+          loading="lazy"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+        <form method="dialog">
+          <button>✖</button>
+        </form>
+      </dialog>
+      <code>function renderBox</code>
+      <p
+        >It renders various types of solid and textured boxes. The scene
+        background is a static equirectangular image.</p
+      >
+    </article>
+
+    <article>
+      <button onclick="document.getElementById('page-models').showModal();">
+        Open Models
+      </button>
+      <dialog id="page-models">
+        <iframe
+          src="/models.html"
+          frameborder="0"
+          loading="lazy"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+        <form method="dialog">
+          <button>✖</button>
+        </form>
+      </dialog>
+      <code>function renderGltfModel</code>
+      <p
+        >It renders still and animated 3D models. The scene background is an
+        equirectangular HDR image.</p
+      >
+    </article>
+
+    <details>
+      <summary>Sources</summary>
+      <ul>
+        <li>
+          <a href="https://simplecss.org/" target="_blank"
+            >Simple.css Framework</a
+          >
+          - A CSS framework that makes semantic HTML look good.
+        </li>
+        <li>
+          <a href="https://necolas.github.io/normalize.css/" target="_blank"
+            >Normalize.css</a
+          >
+          - A modern, HTML5-ready alternative to CSS resets.
+        </li>
+        <li>
+          <a href="https://fonts.google.com/" target="_blank">Google Fonts</a> -
+          A computer font and web font service owned by Google. All fonts are
+          released under the
+          <a href="https://openfontlicense.org/" target="_blank"
+            >Open Font License</a
+          >.
+        </li>
+        <li>
+          <a href="https://placehold.co/" target="_blank">Placehold</a> - A
+          simple, fast and free image placeholder service.
+        </li>
+        <li>
+          <a href="https://picsum.photos/" target="_blank">Lorem Picsum</a> -
+          The Lorem Ipsum for photos.
+        </li>
+        <li>
+          <a href="https://polyhaven.com/" target="_blank">Poly Haven</a> - The
+          public 3D asset library. All downloaded assets are not just free, but
+          <a href="https://polyhaven.com/license" target="_blank">CC0</a>,
+          meaning you can use them for absolutely any purpose without
+          restrictions.
+        </li>
+        <li>
+          <a href="https://sketchfab.com/" target="_blank">Sketchfab</a> - A 3D
+          asset website used to publish, share, discover, buy and sell 3D, VR
+          and AR content. All downloaded models are licensed as Free Standard
+          under the
+          <a href="https://sketchfab.com/licenses" target="_blank"
+            >Sketchfab License</a
+          >.
+        </li>
+      </ul>
+    </details>
+
+    <script type="module">
+      import {
+        isSupported,
+        setBackground,
+        setResponsive,
+        animationList,
+        renderText,
+      } from "/functions.js";
+      import * as THREE from "three";
+
+      if (isSupported()) {
+        const canvas = document.querySelector("#title");
+        const scene = new THREE.Scene();
+        const clock = new THREE.Clock();
+        const camera = new THREE.PerspectiveCamera(
+          50,
+          canvas.scrollWidth / canvas.scrollHeight,
+          1,
+          1500
+        );
+        const light = new THREE.DirectionalLight(0xffffff, 10);
+        const renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: true,
+          canvas,
+        });
+
+        setBackground({ dark: 0x2b2b2b, light: 0xf5f7ff, scene });
+        camera.position.set(15, 15, 0);
+        camera.lookAt(0, 0, 0);
+        light.position.set(0, 0, 10);
+        light.target.position.set(0, 0, 0);
+        scene.add(light);
+        scene.add(light.target);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(canvas.scrollWidth, canvas.scrollHeight);
+
+        await renderText({
+          text: "Welcome to\nThree.JS Tinkerspace",
+          font: "/fonts/quicksand_bold.json",
+          size: 20,
+          color: 0x996633,
+          posX: -170,
+          posY: 17,
+          scene,
+        });
+
+        animationList.push({
+          element: { camera, light, swing: "left" },
+          animate: function (element, delta) {
+            const { camera, light } = element;
+            camera.lookAt(0, 0, 0);
+            if (camera.position.z < 100) {
+              camera.position.z += 0.5;
+            }
+            if (element.swing === "right") {
+              if (light.target.position.x < 35) {
+                light.target.position.x += 0.5;
+              } else {
+                element.swing = "left";
+              }
+            } else {
+              if (light.target.position.x > -35) {
+                light.target.position.x -= 0.5;
+              } else {
+                element.swing = "right";
+              }
+            }
+          },
+        });
+
+        function render(time) {
+          const delta = clock.getDelta();
+          animationList.forEach(function ({ element, animate }) {
+            animate(element, delta);
+          });
+          renderer.render(scene, camera);
+          requestAnimationFrame(render);
+        }
+        requestAnimationFrame(render);
+
+        setResponsive({
+          canvas,
+          renderer,
+          camera,
+          responsive: function (canvas) {
+            canvas.style.width = "100%";
+            canvas.style.height = canvas.clientWidth / 4 + "px";
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

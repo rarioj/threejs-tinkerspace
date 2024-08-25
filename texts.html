@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Texts | Three.JS Tinkerspace</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.167.1/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        isSupported,
+        setBackground,
+        setResponsive,
+        renderText,
+      } from "/functions.js";
+      import * as THREE from "three";
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+      if (isSupported()) {
+        const scene = new THREE.Scene();
+        const clock = new THREE.Clock();
+        const camera = new THREE.PerspectiveCamera(
+          50,
+          window.innerWidth / window.innerHeight,
+          1,
+          1500
+        );
+        const light = new THREE.DirectionalLight(0xffffff, 10);
+        const light2 = new THREE.DirectionalLight(0xffffff, 1);
+        const renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: true,
+        });
+        const canvas = renderer.domElement;
+        const controls = new OrbitControls(camera, canvas);
+
+        setBackground({ dark: 0x2b2b2b, light: 0xf5f7ff, scene });
+        camera.position.set(0, 0, 300);
+        camera.lookAt(0, 0, 0);
+        light.position.set(0, 0, 25);
+        light.target.position.set(0, 0, 0);
+        light2.position.set(0, 0, -200);
+        light2.target.position.set(0, 0, 0);
+        scene.add(light);
+        scene.add(light.target);
+        scene.add(light2);
+        scene.add(light2.target);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        controls.listenToKeyEvents(window);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.screenSpacePanning = false;
+        controls.minDistance = 100;
+        controls.maxDistance = 500;
+        controls.maxPolarAngle = Math.PI / 2;
+
+        await renderText({
+          text: "Gentilis",
+          font: "/fonts/sono_regular.json",
+          size: 5,
+          flat: true,
+          color: 0xaaaaaa,
+          posY: 100,
+          scene,
+        });
+
+        await renderText({
+          text: "Waltz, bad nymph, for quick jigs vex.",
+          font: "https://raw.githubusercontent.com/mrdoob/three.js/master/examples/fonts/gentilis_regular.typeface.json",
+          color: 0xff0000,
+          posY: 85,
+          scene,
+        });
+
+        await renderText({
+          text: "Helvetiker (bevel size 0.75, thickness 0.5)",
+          font: "/fonts/sono_regular.json",
+          size: 5,
+          flat: true,
+          color: 0xaaaaaa,
+          posY: 65,
+          scene,
+        });
+
+        await renderText({
+          text: "Glib jocks quiz nymph to vex dwarf.",
+          font: "https://raw.githubusercontent.com/mrdoob/three.js/master/examples/fonts/helvetiker_regular.typeface.json",
+          bevelEnabled: true,
+          bevelThickness: 0.5,
+          bevelSize: 0.75,
+          color: 0x00ff00,
+          posY: 50,
+          scene,
+        });
+
+        await renderText({
+          text: "Optimer",
+          font: "/fonts/sono_regular.json",
+          size: 5,
+          flat: true,
+          color: 0xaaaaaa,
+          posY: 30,
+          scene,
+        });
+
+        await renderText({
+          text: "Sphinx of black quartz, judge my vow.",
+          font: "https://raw.githubusercontent.com/mrdoob/three.js/master/examples/fonts/optimer_regular.typeface.json",
+          color: 0x0000ff,
+          posY: 15,
+          scene,
+        });
+
+        await renderText({
+          text: "Droid Serif (bevel size 0.25, thickness 0.75)",
+          font: "/fonts/sono_regular.json",
+          size: 5,
+          flat: true,
+          color: 0xaaaaaa,
+          posY: -5,
+          scene,
+        });
+
+        await renderText({
+          text: "How quickly daft jumping zebras vex!",
+          font: "https://raw.githubusercontent.com/mrdoob/three.js/master/examples/fonts/droid/droid_serif_regular.typeface.json",
+          bevelEnabled: true,
+          bevelThickness: 0.75,
+          bevelSize: 0.25,
+          color: 0xffff00,
+          posY: -20,
+          scene,
+        });
+
+        await renderText({
+          text: "Droid Sans",
+          font: "/fonts/sono_regular.json",
+          size: 5,
+          flat: true,
+          color: 0xaaaaaa,
+          posY: -40,
+          scene,
+        });
+
+        await renderText({
+          text: "The five boxing wizards jump quickly.",
+          font: "https://raw.githubusercontent.com/mrdoob/three.js/master/examples/fonts/droid/droid_sans_regular.typeface.json",
+          color: 0xff00ff,
+          posY: -55,
+          scene,
+        });
+
+        await renderText({
+          text: "Droid Sans Mono (bevel size 0.1, thickness 0.25)",
+          font: "/fonts/sono_regular.json",
+          size: 5,
+          flat: true,
+          color: 0xaaaaaa,
+          posY: -75,
+          scene,
+        });
+
+        await renderText({
+          text: "Mr. Jock, TV quiz PhD, bags few lynx.",
+          font: "https://raw.githubusercontent.com/mrdoob/three.js/master/examples/fonts/droid/droid_sans_mono_regular.typeface.json",
+          bevelEnabled: true,
+          bevelThickness: 0.25,
+          bevelSize: 0.1,
+          color: 0xffffff,
+          posY: -90,
+          scene,
+        });
+
+        function render(time) {
+          controls.update();
+          renderer.render(scene, camera);
+          requestAnimationFrame(render);
+        }
+        document.body.appendChild(canvas);
+        requestAnimationFrame(render);
+
+        setResponsive({ canvas, renderer, camera });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Shapes | Three.JS Tinkerspace</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.167.1/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        isSupported,
+        setBackground,
+        setResponsive,
+        animationList,
+        renderText,
+        renderShape,
+      } from "/functions.js";
+      import * as THREE from "three";
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+      if (isSupported()) {
+        const scene = new THREE.Scene();
+        const clock = new THREE.Clock();
+        const camera = new THREE.PerspectiveCamera(
+          50,
+          window.innerWidth / window.innerHeight,
+          1,
+          1500
+        );
+        const light = new THREE.DirectionalLight(0xffffff, 10);
+        const light2 = new THREE.DirectionalLight(0xffffff, 1);
+        const renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: true,
+        });
+        const canvas = renderer.domElement;
+        const controls = new OrbitControls(camera, canvas);
+
+        setBackground({ scene });
+        camera.position.set(0, 0, 300);
+        camera.lookAt(0, 0, 0);
+        light.position.set(0, 0, 25);
+        light.target.position.set(0, 0, 0);
+        light2.position.set(0, 0, -200);
+        light2.target.position.set(0, 0, 0);
+        scene.add(light);
+        scene.add(light.target);
+        scene.add(light2);
+        scene.add(light2.target);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        controls.listenToKeyEvents(window);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.screenSpacePanning = false;
+        controls.minDistance = 100;
+        controls.maxDistance = 500;
+        controls.maxPolarAngle = Math.PI / 2;
+
+        await renderText({
+          text: "Regular Polygon Shapes",
+          font: "/fonts/sono_regular.json",
+          size: 4,
+          flat: true,
+          posY: 100,
+          scene,
+        });
+
+        renderShape({
+          radius: 5,
+          segments: 3,
+          posX: -75,
+          posY: 70,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderShape({
+          radius: 5,
+          segments: 4,
+          posX: -50,
+          posY: 70,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderShape({
+          radius: 5,
+          segments: 5,
+          posX: -25,
+          posY: 70,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderShape({
+          radius: 5,
+          segments: 6,
+          posX: 0,
+          posY: 70,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderShape({
+          radius: 5,
+          segments: 8,
+          posX: 25,
+          posY: 70,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderShape({
+          radius: 5,
+          segments: 10,
+          posX: 50,
+          posY: 70,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderShape({
+          radius: 5,
+          texture: "https://picsum.photos/id/248/100/100",
+          posX: 75,
+          posY: 70,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderShape({
+          radius: 10,
+          segments: 3,
+          innerRadius: 8,
+          thetaLength: 1.9,
+          color: 0xff0000,
+          posX: -75,
+          posY: 70,
+          scene,
+        });
+
+        renderShape({
+          radius: 10,
+          segments: 4,
+          innerRadius: 8,
+          thetaLength: 1.75,
+          color: 0x00ff00,
+          posX: -50,
+          posY: 70,
+          scene,
+        });
+
+        renderShape({
+          radius: 10,
+          segments: 5,
+          innerRadius: 8,
+          thetaLength: 1.25,
+          color: 0x0000ff,
+          posX: -25,
+          posY: 70,
+          scene,
+        });
+
+        renderShape({
+          radius: 10,
+          segments: 6,
+          innerRadius: 8,
+          thetaLength: 1.8,
+          color: 0xffff00,
+          posX: 0,
+          posY: 70,
+          scene,
+        });
+
+        renderShape({
+          radius: 10,
+          segments: 8,
+          innerRadius: 8,
+          thetaLength: 1.9,
+          color: 0xff00ff,
+          posX: 25,
+          posY: 70,
+          scene,
+        });
+
+        renderShape({
+          radius: 10,
+          segments: 10,
+          innerRadius: 8,
+          thetaLength: 1.5,
+          color: 0x00ffff,
+          posX: 50,
+          posY: 70,
+          scene,
+        });
+
+        renderShape({
+          radius: 10,
+          innerRadius: 8,
+          thetaLength: 1.75,
+          texture: "https://picsum.photos/id/248/100/100",
+          posX: 75,
+          posY: 70,
+          scene,
+        });
+
+        await renderText({
+          text: "Flat Plane Geometry Shapes",
+          font: "/fonts/sono_regular.json",
+          size: 4,
+          flat: true,
+          posY: 40,
+          scene,
+        });
+
+        renderShape({
+          width: 25,
+          height: 25,
+          color: 0xff0000,
+          posX: -75,
+          posY: 0,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.05;
+            element.rotation.y -= 0.05;
+            element.rotation.z += 0.05;
+          },
+        });
+
+        renderShape({
+          width: 50,
+          height: 20,
+          color: 0x00ff00,
+          posX: 0,
+          posY: 0,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.05;
+            element.rotation.y -= 0.05;
+            element.rotation.z += 0.05;
+          },
+        });
+
+        renderShape({
+          width: 30,
+          height: 40,
+          texture: "https://picsum.photos/id/175/300/400",
+          posX: 75,
+          posY: 0,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.05;
+            element.rotation.y -= 0.05;
+            element.rotation.z += 0.05;
+          },
+        });
+
+        await renderText({
+          text: "Procedurally Drawn Shapes",
+          font: "/fonts/sono_regular.json",
+          size: 4,
+          flat: true,
+          posY: -35,
+          scene,
+        });
+
+        renderShape({
+          shape: function (shape) {
+            const x = 0;
+            const y = 0;
+            shape.moveTo(x, y);
+            shape.quadraticCurveTo(x + 50, y - 80, x + 90, y - 10);
+            shape.quadraticCurveTo(x + 100, y - 10, x + 115, y - 40);
+            shape.quadraticCurveTo(x + 115, y, x + 115, y + 40);
+            shape.quadraticCurveTo(x + 100, y + 10, x + 90, y + 10);
+            shape.quadraticCurveTo(x + 50, y + 80, x, y);
+          },
+          color: 0x0000ff,
+          scaleX: 0.4,
+          scaleY: 0.4,
+          scaleZ: 0.4,
+          posX: -60,
+          posY: -80,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderShape({
+          shape: function (shape) {
+            shape.moveTo(80, 40);
+            shape.absarc(40, 40, 40, 0, Math.PI * 2, false);
+            const eye1 = new THREE.Path()
+              .moveTo(35, 20)
+              .absellipse(25, 20, 10, 10, 0, Math.PI * 2, true);
+            const eye2 = new THREE.Path()
+              .moveTo(65, 20)
+              .absarc(55, 20, 10, 0, Math.PI * 2, true);
+            const mouth = new THREE.Path()
+              .moveTo(20, 40)
+              .quadraticCurveTo(40, 60, 60, 40)
+              .bezierCurveTo(70, 45, 70, 50, 60, 60)
+              .quadraticCurveTo(40, 80, 20, 60)
+              .quadraticCurveTo(5, 50, 20, 40);
+            shape.holes.push(eye1);
+            shape.holes.push(eye2);
+            shape.holes.push(mouth);
+          },
+          texture: "https://picsum.photos/id/507/300/300",
+          scaleX: 0.4,
+          scaleY: 0.4,
+          scaleZ: 0.4,
+          posX: 0,
+          posY: -80,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderShape({
+          shape: function (shape) {
+            const x = 0;
+            const y = 0;
+            shape.moveTo(x + 25, y + 25);
+            shape.bezierCurveTo(x + 25, y + 25, x + 20, y, x, y);
+            shape.bezierCurveTo(x - 30, y, x - 30, y + 35, x - 30, y + 35);
+            shape.bezierCurveTo(x - 30, y + 55, x - 10, y + 77, x + 25, y + 95);
+            shape.bezierCurveTo(x + 60, y + 77, x + 80, y + 55, x + 80, y + 35);
+            shape.bezierCurveTo(x + 80, y + 35, x + 80, y, x + 50, y);
+            shape.bezierCurveTo(x + 35, y, x + 25, y + 25, x + 25, y + 25);
+          },
+          texture: "https://picsum.photos/id/237/300/300",
+          scaleX: 0.4,
+          scaleY: 0.4,
+          scaleZ: 0.4,
+          posX: 60,
+          posY: -80,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        function render(time) {
+          const delta = clock.getDelta();
+          animationList.forEach(function ({ element, animate }) {
+            animate(element, delta);
+          });
+          controls.update();
+          renderer.render(scene, camera);
+          requestAnimationFrame(render);
+        }
+        document.body.appendChild(canvas);
+        requestAnimationFrame(render);
+
+        setResponsive({ canvas, renderer, camera });
+      }
+    </script>
+  </body>
+</html>
