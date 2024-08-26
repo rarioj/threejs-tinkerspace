@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Boxes | Three.JS Tinkerspace</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.167.1/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        isSupported,
+        setBackground,
+        setResponsive,
+        animationList,
+        renderText,
+        renderBox,
+      } from "/functions.js";
+      import * as THREE from "three";
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+      if (isSupported()) {
+        const scene = new THREE.Scene();
+        const clock = new THREE.Clock();
+        const camera = new THREE.PerspectiveCamera(
+          50,
+          window.innerWidth / window.innerHeight,
+          1,
+          1500
+        );
+        const light = new THREE.DirectionalLight(0xffffff, 10);
+        const light2 = new THREE.DirectionalLight(0xffffff, 1);
+        const renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: true,
+        });
+        const canvas = renderer.domElement;
+        const controls = new OrbitControls(camera, canvas);
+
+        setBackground({ scene });
+        camera.position.set(0, 0, 300);
+        camera.lookAt(0, 0, 0);
+        light.position.set(0, 0, 25);
+        light.target.position.set(0, 0, 0);
+        light2.position.set(0, 0, -200);
+        light2.target.position.set(0, 0, 0);
+        scene.add(light);
+        scene.add(light.target);
+        scene.add(light2);
+        scene.add(light2.target);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        controls.listenToKeyEvents(window);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.screenSpacePanning = false;
+        controls.minDistance = 100;
+        controls.maxDistance = 500;
+        controls.maxPolarAngle = Math.PI / 2;
+
+        renderBox({
+          width: 25,
+          height: 25,
+          depth: 25,
+          widthSegments: 8,
+          heightSegments: 8,
+          depthSegments: 8,
+          color: 0xff0000,
+          isSolid: false,
+          posX: -50,
+          posY: 100,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderBox({
+          width: 25,
+          height: 25,
+          depth: 25,
+          color: 0xff0000,
+          posX: -50,
+          posY: 50,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderBox({
+          width: 25,
+          height: 25,
+          depth: 25,
+          textures: [
+            "https://placehold.co/300x300/FF3333/FFFFFF.png?text=Hello",
+          ],
+          posX: -50,
+          posY: 0,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderBox({
+          width: 25,
+          height: 25,
+          depth: 25,
+          textures: [
+            "https://placehold.co/300x300/FFFF33/000000.png?text=JavaScript",
+            "https://placehold.co/300x300/FF33FF/000000.png?text=CSS",
+            "https://placehold.co/300x300/33FFFF/000000.png?text=HTML",
+          ],
+          posX: -50,
+          posY: -50,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderBox({
+          width: 25,
+          height: 25,
+          depth: 25,
+          textures: [
+            "https://picsum.photos/id/63/300/300",
+            "https://picsum.photos/id/76/300/300",
+            "https://picsum.photos/id/129/300/300",
+            "https://picsum.photos/id/146/300/300",
+            "https://picsum.photos/id/188/300/300",
+            "https://picsum.photos/id/211/300/300",
+          ],
+          posX: -50,
+          posY: -100,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderBox({
+          width: 40,
+          height: 15,
+          depth: 25,
+          color: 0x000000,
+          isSolid: false,
+          posX: 50,
+          posY: 100,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderBox({
+          width: 40,
+          height: 50,
+          depth: 40,
+          color: 0x00ff00,
+          posX: 50,
+          posY: 50,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderBox({
+          width: 20,
+          height: 10,
+          depth: 40,
+          textures: [
+            "https://placehold.co/400x100/00FF00/999999.png?text=One",
+            "https://placehold.co/400x100/00FF00/999999.png?text=Two",
+            "https://placehold.co/200x400/00FF00/999999.png?text=Three",
+            "https://placehold.co/200x400/00FF00/999999.png?text=Four",
+            "https://placehold.co/200x100/00FF00/999999.png?text=Five",
+            "https://placehold.co/200x100/00FF00/999999.png?text=Six",
+          ],
+          posX: 50,
+          posY: 0,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderBox({
+          width: 30,
+          height: 40,
+          depth: 25,
+          textures: [
+            "https://placehold.co/250x400/FF0000/999999.png?text=Alfa",
+            "https://placehold.co/250x400/FFFF00/999999.png?text=Bravo",
+            "https://placehold.co/300x250/FFFFFF/999999.png?text=Charlie",
+            "https://placehold.co/300x250/00FFFF/999999.png?text=Delta",
+            "https://placehold.co/300x400/0000FF/999999.png?text=Echo",
+            "https://placehold.co/300x400/000000/999999.png?text=Foxtrot",
+          ],
+          posX: 50,
+          posY: -50,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        renderBox({
+          width: 40,
+          height: 30,
+          depth: 20,
+          textures: [
+            "https://picsum.photos/id/219/200/300",
+            "https://picsum.photos/id/227/200/300",
+            "https://picsum.photos/id/237/400/200",
+            "https://picsum.photos/id/264/400/200",
+            "https://picsum.photos/id/292/400/300",
+            "https://picsum.photos/id/312/400/300",
+          ],
+          posX: 50,
+          posY: -100,
+          scene,
+          animate: function (element, delta) {
+            element.rotation.x += 0.025;
+            element.rotation.y += 0.025;
+            element.rotation.z += 0.025;
+          },
+        });
+
+        function render(time) {
+          const delta = clock.getDelta();
+          animationList.forEach(function ({ element, animate }) {
+            animate(element, delta);
+          });
+          controls.update();
+          renderer.render(scene, camera);
+          requestAnimationFrame(render);
+        }
+        document.body.appendChild(canvas);
+        requestAnimationFrame(render);
+
+        setResponsive({ canvas, renderer, camera });
+      }
+    </script>
+  </body>
+</html>

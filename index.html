@@ -80,7 +80,6 @@
           <button>✖</button>
         </form>
       </dialog>
-      <code>function renderText</code>
       <p
         >It renders texts of various font typefaces. Use the
         <a href="https://gero3.github.io/facetype.js/" target="_blank"
@@ -89,6 +88,7 @@
         tool to convert a font file to a typeface <code>JSON</code> font file.
         The scene background follows the system's color scheme (dark or light).
       </p>
+      <code>function renderText</code>
     </article>
 
     <article>
@@ -107,18 +107,23 @@
           <button>✖</button>
         </form>
       </dialog>
-      <code>function renderShape</code>
       <p
         >It renders various flat 2D shapes, such as regular polygons (they have
         equal sides and angles - triangles, squares, polygons, even circles),
         flat plane geometries (squares and rectangles), and procedurally drawn
         shapes.</p
       >
+      <code>function renderShape</code>
     </article>
 
     <article>
       <button onclick="document.getElementById('page-boxes').showModal();">
         Open Boxes
+      </button>
+      <button
+        onclick="document.getElementById('page-boxes-no-background').showModal();"
+      >
+        No Background
       </button>
       <dialog id="page-boxes">
         <iframe
@@ -132,16 +137,39 @@
           <button>✖</button>
         </form>
       </dialog>
-      <code>function renderBox</code>
+      <dialog id="page-boxes-no-background">
+        <iframe
+          src="/boxes-no-background.html"
+          frameborder="0"
+          loading="lazy"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+        <form method="dialog">
+          <button>✖</button>
+        </form>
+      </dialog>
       <p
         >It renders various types of solid and textured boxes. The scene
         background is a static equirectangular image.</p
       >
+      <p
+        ><mark>Warning:</mark> Low-spec device hardware may have issues opening
+        the page with a 4K/HDR/EXR image background. Open the page with a static
+        color background instead (click the <em>No Background</em> button
+        above).</p
+      >
+      <code>function renderBox</code>
     </article>
 
     <article>
       <button onclick="document.getElementById('page-models').showModal();">
         Open Models
+      </button>
+      <button
+        onclick="document.getElementById('page-models-no-background').showModal();"
+      >
+        No Background
       </button>
       <dialog id="page-models">
         <iframe
@@ -155,11 +183,29 @@
           <button>✖</button>
         </form>
       </dialog>
-      <code>function renderGltfModel</code>
+      <dialog id="page-models-no-background">
+        <iframe
+          src="/models-no-background.html"
+          frameborder="0"
+          loading="lazy"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
+        <form method="dialog">
+          <button>✖</button>
+        </form>
+      </dialog>
       <p
         >It renders still and animated 3D models. The scene background is an
         equirectangular HDR image.</p
       >
+      <p
+        ><mark>Warning:</mark> Low-spec device hardware may have issues opening
+        the page with a 4K/HDR/EXR image background. Open the page with a static
+        color background instead (click the <em>No Background</em> button
+        above).</p
+      >
+      <code>function renderGltfModel</code>
     </article>
 
     <details>
